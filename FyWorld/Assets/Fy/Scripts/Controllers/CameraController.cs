@@ -38,6 +38,7 @@ namespace Fy.Controllers {
 
 		/// This will update the camera position and camera zoom.
 		private void UpdateCamera() {
+			MoveCameraWASD();
 			if (Input.GetMouseButton(2)) {
 				Vector3 diff = this._lastMousePosition - this.mousePosition;
 
@@ -52,6 +53,29 @@ namespace Fy.Controllers {
 
 			if (this.zoom != this._camera.orthographicSize) {
 				this._camera.orthographicSize = this.zoom;
+				this.UpdateViewRect();
+			}
+		}
+
+		// Use wasd to move the camera
+		private void MoveCameraWASD() {
+			if (Input.GetKey(KeyCode.W)) {
+				this._camera.transform.Translate(Vector3.up * this.sensitivity);
+				this.UpdateViewRect();
+			}
+
+			if (Input.GetKey(KeyCode.S)) {
+				this._camera.transform.Translate(Vector3.down * this.sensitivity);
+				this.UpdateViewRect();
+			}
+
+			if (Input.GetKey(KeyCode.A)) {
+				this._camera.transform.Translate(Vector3.left * this.sensitivity);
+				this.UpdateViewRect();
+			}
+
+			if (Input.GetKey(KeyCode.D)) {
+				this._camera.transform.Translate(Vector3.right * this.sensitivity);
 				this.UpdateViewRect();
 			}
 		}
@@ -75,7 +99,7 @@ namespace Fy.Controllers {
 			this._camera = Camera.main;
 			this.zoomMin = .1f;
 			this.zoomMax = .6f;
-			this.sensitivity = 2f;
+			this.sensitivity = .1f;
 			this.zoomDesired = .3f;
 		}
 
