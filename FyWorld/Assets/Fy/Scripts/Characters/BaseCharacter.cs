@@ -92,7 +92,7 @@ namespace Fy.Characters {
 
 		// Describe this class
 		public override string ToString() {
-			return "Character ("+this.def.ToString() +" at "+this.position+")";
+			return "Character ("+this.name +":" +this.def.ToString() +" at "+this.position+")";
 		}
 		public void DropOnTheFloor() {
 			if (this.inventory.count > 0 && this.inventory.def != null) {
