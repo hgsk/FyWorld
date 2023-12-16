@@ -14,7 +14,7 @@ namespace Fy.Characters.AI {
         public TaskSpellFire(BaseCharacter character, Task task) : base(character, task) {}
 
         public override bool Perform() {
-            Debug.Log("Spell fire");
+            CustomDebug.Log(character + ": Spell fire");
             
             return true;
         }
