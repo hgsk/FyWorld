@@ -56,7 +56,7 @@ namespace Fy.Entities {
 		public bool hasOrder { get { return !(this.currentOrder == null); } }
 
 		public override string ToString() {
-			return "Titable ("+this.def.name+" at "+this.position+" on layer "+this.def.layer;
+			return "Tilable ("+this.def.name+" at "+this.position+" on layer "+this.def.layer;
 		}
 
 		/// Register the bucket of the tilable

@@ -53,6 +53,9 @@ namespace Fy.Characters {
 					} else if (this.currentTask.state == TaskState.Failed) {
 						// clear inv ?
 						this.currentTask = null;
+					} else if (this.currentTask.taskClass == null) {
+						throw new System.Exception("Task class is null");
+						this.currentTask = null;
 					} else {
 						this.currentTask.taskClass.Tick();
 					}

@@ -15,7 +15,6 @@ using Fy.Entities;
 using Fy.Helpers;
 using Fy.Controllers;
 using Fy.Characters;
-using Fy.UI;
 
 namespace Fy {
 	// Manage the game. (yep).
@@ -53,16 +52,6 @@ namespace Fy {
 			Debug.Log(this.map);
 			/// TEST STUFF
 
-			foreach (Vector2Int position in new RectI(new Vector2Int(10, 10), 5, 5)) {
-				if (this.map[position].blockStackable == false) {
-					this.map.Spawn(position, new Stackable(
-						position,
-						Defs.stackables["logs"],
-						Random.Range(1, Defs.stackables["logs"].maxStack)
-					));
-				}
-			}
-
 			///// TEST WALLS
 			int y = 22;
 			for (int x = 10; x < 28; x++) {
@@ -79,14 +68,16 @@ namespace Fy {
 				));
 			}
 			Loki.map.UpdateConnectedBuildings();
+            Debug.Log("loki updated");
+
 			///// TEST WALLS	
 
-			/*for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 5; i++) {
 				this.map.SpawnCharacter(new Animal(new Vector2Int(15,15), Defs.animals["chicken"]));
-			}*/
+			}
 			GrowArea area = new GrowArea(Defs.plants["carrot"]);
 			area.Add(new RectI(new Vector2Int(15,15), 6, 6));
-
+			
 			StockArea stockarea = new StockArea(Defs.empty);
 			stockarea.Add(new RectI(new Vector2Int(5,5), 6, 6));
 
@@ -134,6 +125,7 @@ namespace Fy {
 
 		// WARNING WARNING : Clean this shit.
 		void OnDrawGizmos() {
+			return;
 			if (this._ready && Settings.DEBUG) {
 				if (this.DrawReserved) {
 					DebugRenderer.DrawReserved();

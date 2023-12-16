@@ -16,6 +16,14 @@ namespace Fy.Definitions {
 	public class LivingDef : Def {
 		public string shortDesc;
 		public GraphicDef graphics;
+		// describe this class
+		public override string ToString() {
+			return string.Format(
+				"AnimalDef: {0} - {1}",
+				this.uid,
+				this.shortDesc
+			);
+		}
 	}
 
 	[System.Serializable]

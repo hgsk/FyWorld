@@ -49,8 +49,21 @@ namespace Fy.Characters.AI {
 			this.ticksToPerform = ticksToPerform;
 		}
 
+		public override string ToString() {
+			return string.Format(
+				"Task: {0} - {1} - {2} - {3}",
+				this.def.taskType,
+				this.state,
+				this.targets.currentPosition,
+				this.targets.current
+			);
+		}
+
 		public void GetClass(BaseCharacter character) {
 			switch (this.def.taskType) {
+				case TaskType.Eat:
+					this.taskClass = new TaskEat(character, this);
+					break;
 				case TaskType.Cut:
 					this.taskClass = new TaskCut(character, this);
 					break;
@@ -70,6 +83,7 @@ namespace Fy.Characters.AI {
 					this.taskClass = new HaulRecipeJob(character, this);
 					break;
 				default: 
+					throw new Exception("Task type not implemented: " + this.def.taskType);
 					break;
 			}
 		}
