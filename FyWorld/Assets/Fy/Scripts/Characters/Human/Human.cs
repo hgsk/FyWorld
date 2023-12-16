@@ -35,6 +35,8 @@ namespace Fy.Characters {
 			brainNode.AddSubnode(new N_Cut(WorldUtils.HasPlantsToCut));
 			//brainNode.AddSubnode(new N_Grow(WorldUtils.FieldHasWork));
 			brainNode.AddSubnode(new N_HaulRecipe(WorldUtils.HaulRecipeNeeded));
+			// add spell fire 
+			brainNode.AddSubnode(new N_SpellFire());
 			brainNode.AddSubnode(new N_Idle());
 
 			//rainNode.AddSubnode(new EatVegiesNode(() => (this.stats.vitals[Vitals.Hunger].ValueInfToPercent(.25f))));

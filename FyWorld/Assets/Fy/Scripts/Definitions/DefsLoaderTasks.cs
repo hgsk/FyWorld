@@ -59,6 +59,12 @@ namespace Fy.Definitions {
 			});
 
 			Defs.AddTask(new TaskDef{
+				uid = "task_spell_fire",
+				taskType = TaskType.SpellFire,
+				targetType = TargetType.Adjacent,
+			});
+
+			Defs.AddTask(new TaskDef{
 				uid = "task_idle",
 				taskType = TaskType.Idle
 			});
@@ -67,6 +73,7 @@ namespace Fy.Definitions {
 				uid = "task_eat",
 				taskType = TaskType.Eat
 			});
+
 		}
 	}
 }

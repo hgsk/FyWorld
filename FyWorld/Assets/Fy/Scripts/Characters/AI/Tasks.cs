@@ -24,8 +24,9 @@ namespace Fy.Characters.AI {
 		Harvest,
 		Sow, 
 		HaulRecipe,
-		Dirt
-	}
+		Dirt,
+        SpellFire
+    }
 
 	public class Task {
 		public TargetList targets;
@@ -61,6 +62,9 @@ namespace Fy.Characters.AI {
 
 		public void GetClass(BaseCharacter character) {
 			switch (this.def.taskType) {
+				case TaskType.SpellFire:
+					this.taskClass = new TaskSpellFire(character, this);
+					break;
 				case TaskType.Eat:
 					this.taskClass = new TaskEat(character, this);
 					break;

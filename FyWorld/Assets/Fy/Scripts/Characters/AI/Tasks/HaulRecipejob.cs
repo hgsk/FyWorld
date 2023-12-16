@@ -12,6 +12,8 @@ using Fy.Characters;
 using Fy.Definitions;
 
 namespace Fy.Characters.AI {
+	// what is haul
+	// haul is a job that will take a tilable and put it in the inventory
 	public class HaulRecipeJob : JobClass {
 		public HaulRecipeJob(BaseCharacter character, Task task) : base(character, task) {
 			this.jobs = HaulRecipeJob.Haul(character, task);

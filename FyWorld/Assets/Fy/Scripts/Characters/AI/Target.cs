@@ -15,8 +15,14 @@ using Fy.World;
 
 namespace Fy.Characters.AI {
 	public enum TargetType {
+		// describe each
+		// Tile: A tile in the map
 		None,
+		// Tile: A tile in the map
 		Tile,
+		// Adjacent: A tile adjacent to the target
+		// in japanese
+		// 隣接した
 		Adjacent,
 	}
 
