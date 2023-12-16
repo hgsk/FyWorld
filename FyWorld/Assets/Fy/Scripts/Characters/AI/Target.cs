@@ -16,7 +16,6 @@ using Fy.World;
 namespace Fy.Characters.AI {
 	public enum TargetType {
 		// describe each
-		// Tile: A tile in the map
 		None,
 		// Tile: A tile in the map
 		Tile,
