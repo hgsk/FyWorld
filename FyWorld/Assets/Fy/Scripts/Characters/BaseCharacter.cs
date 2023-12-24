@@ -41,7 +41,7 @@ namespace Fy.Characters {
 		/* Base mesh for a simple character, , can be overwritten or not used at all */
 		private Mesh _mesh;
 
-		public BaseCharacter(Vector2Int position, LivingDef def) {
+        public BaseCharacter(Vector2Int position, LivingDef def) {
 			this.stats = new CharacterStats();
 			this.def = def;
 			this.inventory = new Inventory(90);

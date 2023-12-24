@@ -11,6 +11,8 @@ using Fy.World;
 using Fy.Definitions;
 using Fy.Helpers;
 using Fy.Entities;
+using UnityEngine;
+using Fy.Visuals;
 
 namespace Fy {
 	// Static class use to find stuff in our game.
@@ -20,9 +22,10 @@ namespace Fy {
 		public static StackableLabelController stackableLabelController { get { return Loki.manager.stackableLabelController; } }
 		public static Map map { get { return Loki.manager.map; } }
 		public static Tick tick { get { return Loki.manager.tick; } }
+		public static EffectController effect { get { return Loki.manager.effectController; } }
 
-		/// Load all statics definitions
-		public static void LoadStatics() {
+        /// Load all statics definitions
+        public static void LoadStatics() {
 			Res.Load(); // Load all our resources;
 			DirectionUtils.LoadStatics(); // Set neighbours;
 			Defs.LoadDefaultsDefs(); // Empty def

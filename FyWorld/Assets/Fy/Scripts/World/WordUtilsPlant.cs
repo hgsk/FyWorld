@@ -43,6 +43,21 @@ namespace Fy.World {
 			return WorldUtils.ClosestTilableFromEnum(playerPosition, toCut);
 		}
 
+
+
+		public static List<Tilable> NextToSowLinear(Vector2Int playerPosition, int range) {
+			Debug.Log(playerPosition);
+			List<Tilable> toSow = new List<Tilable>();
+			for (int i = 0; i <= range; i++) {
+				Vector2Int position = playerPosition + new Vector2Int(i, 0);
+				Tilable tilable = Loki.map.grids[Layer.Plant].GetTilableAt(position);
+				Field field = (Field)Loki.map.grids[Layer.Helpers].GetTilableAt(position);
+				if (!Loki.map[position].reserved && tilable == null && field.dirt == true) {
+					toSow.Add((Tilable)field);
+				}
+			}
+			return toSow;
+		}
 		public static Tilable FieldNextTileToDirt(Vector2Int playerPosition) {
 			List<Tilable> toDirt = new List<Tilable>();
 			foreach (GrowArea area in GrowArea.areas) {

@@ -12,6 +12,7 @@ using Fy.Definitions;
 using UnityEngine;
 
 namespace Fy.Characters.AI {
+	// 説明
 	public struct HaulResult {
 		public Job get;
 		public int qty;

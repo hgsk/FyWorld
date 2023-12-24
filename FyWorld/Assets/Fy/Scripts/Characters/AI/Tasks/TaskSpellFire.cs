@@ -1,21 +1,26 @@
-/*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-| FyWorld - A top down simulation game in a fantasy medieval world.    |
-|                                                                      |
-|    :copyright: © 2019 Florian Gasquez.                               |
-|    :license: GPLv3, see LICENSE for more details.                    |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
-
+using System.Collections.Generic;
+using Fy.Entities;
+using Fy.World;
 using UnityEngine;
 
-namespace Fy.Characters.AI {
-    public class TaskSpellFire : TaskClass {
-        public TaskSpellFire(BaseCharacter character, Task task) : base(character, task) {}
+namespace Fy.Characters.AI
+{
+    public class TaskSpellFire : TaskClass
+    {
+        public TaskSpellFire(BaseCharacter character, Task task) : base(character, task) { }
 
-        public override bool Perform() {
+        public override bool Perform()
+        {
+            if (this.character == null)
+            {
+                Debug.LogError("Character is null");
+                return false;
+            }
             CustomDebug.Log(character + ": Spell fire");
-            
+            // get target tileable from sowLinear
+
+            Loki.effect.Spawn("fire", this.character.position);
+
             return true;
         }
     }

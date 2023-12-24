@@ -15,6 +15,7 @@ using Fy.Entities;
 using Fy.Helpers;
 using Fy.Controllers;
 using Fy.Characters;
+using Fy.Visuals;
 
 namespace Fy {
 	// Manage the game. (yep).
@@ -22,6 +23,7 @@ namespace Fy {
 	{
 		/* Map */
 		public CameraController cameraController;
+		public EffectController effectController;
 		public StackableLabelController stackableLabelController;
 		public Tick tick;
 		public Map map;
@@ -44,6 +46,7 @@ namespace Fy {
 			this._ready = false;
 			this.cameraController = this.GetComponent<CameraController>();
 			this.stackableLabelController = this.GetComponentInChildren<StackableLabelController>();
+			this.effectController = this.GetComponent<EffectController>();
 			Loki.LoadStatics();
 			Loki.NewGame(this);
 		}
@@ -72,7 +75,7 @@ namespace Fy {
 
 			///// TEST WALLS	
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 10; i++) {
 				this.map.SpawnCharacter(new Animal(new Vector2Int(15,15), Defs.animals["chicken"]));
 			}
 			GrowArea area = new GrowArea(Defs.plants["carrot"]);
@@ -81,7 +84,7 @@ namespace Fy {
 			StockArea stockarea = new StockArea(Defs.empty);
 			stockarea.Add(new RectI(new Vector2Int(5,5), 6, 6));
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 10; i++) {
 				this.map.SpawnCharacter(new Human(new Vector2Int(10,10), Defs.animals["human"]));
 			}
 			//Fy.Characters.AI.TargetList.GetRandomTargetInRange(new Vector2Int(10, 10));
@@ -125,7 +128,6 @@ namespace Fy {
 
 		// WARNING WARNING : Clean this shit.
 		void OnDrawGizmos() {
-			return;
 			if (this._ready && Settings.DEBUG) {
 				if (this.DrawReserved) {
 					DebugRenderer.DrawReserved();
